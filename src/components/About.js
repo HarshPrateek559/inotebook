@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { useContext } from "react";
 
-export default function About() {
-  return (
-    <div>About</div>
-  )
-}
+import noteContext from "../contexts/notes/noteContext";
+
+const About = () => {
+  try {
+    const first = useContext(noteContext);
+
+    return (
+      <div>
+        Hi! I am {first.name} and I am a {first.role} at {first.company}
+      </div>
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+export default About;
