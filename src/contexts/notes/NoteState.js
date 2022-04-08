@@ -1,5 +1,6 @@
 import NoteContext from "./noteContext";
 
+//it works just like we add props to the component just that now any component can use it just by importing it
 const noteState = (props) => {
   const state = {
     name: "Harsh",
