@@ -38,11 +38,28 @@ const NoteState = (props) => {
       "__v": 0
     }
   ]
-
+  
   const [notes, setNotes] = useState(noteInitials);
+  //Add a note to the state
+  const addNote = (note) => {
+    setNotes([...notes, note]);
+  };
+
+  //Remove a note from the state
+  const deleteNote = (id) => {
+    setNotes(notes.filter((note) => note._id !== id));
+  };
+//edit a note from the state
+  const editNote = (id, updatedNote) => {
+    setNotes(notes.map((note) => (note._id === id ? updatedNote : note)));
+  };
+
+
+
+
   
   return (
-    <NoteContext.Provider value={{state, notes, setNotes}}>{props.children}</NoteContext.Provider>
+    <NoteContext.Provider value={{state, notes, setNotes, addNote, deleteNote, editNote}}>{props.children}</NoteContext.Provider>
   );
 };
 

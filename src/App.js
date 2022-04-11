@@ -4,21 +4,23 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./contexts/notes/NoteState";
-import Alert from "./components/Alert";
+import AddNote from "./components/AddNote";
+// import Alert from "./components/Alert";
 
 function App() {
   return (
     <>
-    <NoteState>
-      <Alert msg = "This is an alert message" type="success"/>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/About" element={<About />} />
-        </Routes>
-      </Router>
-    </NoteState>
+      <NoteState>
+        <Router>
+          <Navbar />
+          {/* <Alert msg="This is an alert message" type="success" /> */}
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route exact path="/About" element={<About />} />
+            <Route exact path="/AddNote" element={<AddNote />} />
+          </Routes>
+        </Router>
+      </NoteState>
     </>
   );
 }

@@ -4,10 +4,11 @@ import noteContext from "../contexts/notes/noteContext";
 
 const About = () => {
   try {
-    const first = useContext(noteContext);
+    const context = useContext(noteContext);
+    const {state} = context;
     return (
       <div>
-        Hi! I am {first.name} and I am a {first.role} at {first.company}
+        Hi! I am {state.name} and I am a {state.role} at {state.company}
       </div>
     );
   } catch (error) {
