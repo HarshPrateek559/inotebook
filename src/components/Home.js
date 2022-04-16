@@ -1,5 +1,6 @@
 import Notes from "./Notes";
 import { Link } from "react-router-dom";
+import AddNotes from "./AddNote";
 
 export default function Home() {
   let mystyle = {
@@ -7,6 +8,7 @@ export default function Home() {
   }
   return (
     <div className="container text-center">
+      {/* <AddNotes /> */}
       <Notes />
       <button className="btn btn-success" style={mystyle}>
         <Link to="/AddNote" className="text-decoration-none text-white">Add Note</Link>

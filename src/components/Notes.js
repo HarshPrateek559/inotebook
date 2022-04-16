@@ -13,12 +13,12 @@ const Notes = () => {
   return (
     <div className=" text-center">
         <h2>HERE ARE YOUR NOTES</h2>
-      <div className="row d-flex justify-content-center">
+      {notes!==[]&&<div className="row d-flex justify-content-center">
 
         {notes.map((note) => {
           return <NoteItem key={note._id} note={note} />;
         })}
-      </div>
+      </div>}
     </div>
   );
 };
