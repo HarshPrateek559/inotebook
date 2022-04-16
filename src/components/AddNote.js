@@ -18,12 +18,9 @@ const AddNote = () => {
     fontSize: "20px",
   };
   const handleChange = (e) => {
-    if(e.keycode === 13){
-      e.target.value+= "\n";
-    }
     setNote({ ...note, [e.target.name]: e.target.value });
   };
-  const handleClick = () => {
+  const handleClick = (e) => {
     addNote(note);
     console.log("click");
   };

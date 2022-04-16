@@ -5,7 +5,7 @@ import noteContext from "../contexts/notes/noteContext";
 const NoteItem = (props) => {
   const context = useContext(noteContext);
   const { deleteNote, editNote } = context;
- const { note } = props;
+  const { note } = props;
   let mystyle = {
     border: "1px solid black",
     borderRadius: "20px 0px 20px 0px",
@@ -23,17 +23,18 @@ const NoteItem = (props) => {
               deleteNote(note._id);
             }}
           />
-          <i
-            className="fa-solid fa-pen-to-square mx-2"
-            onClick={() => {
-              editNote(note._id);
-            }}
-          />
+          <Link to="/AddNote" className="text-dark">
+            <i
+              className="fa-solid fa-pen-to-square mx-2"
+              onClick={() => {
+                editNote(note._id);
+              }}
+            />
+          </Link>
         </p>
       </div>
     </div>
   );
 };
-
 
 export default NoteItem;
