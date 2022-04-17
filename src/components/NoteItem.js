@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import noteContext from "../contexts/notes/noteContext";
 
 const NoteItem = (props) => {
   const context = useContext(noteContext);
-  const { deleteNote, editNote } = context;
-  const { note } = props;
+  const { deleteNote, } = context;
+  const { note, updateNote } = props;
+
   let mystyle = {
     border: "1px solid black",
     borderRadius: "20px 0px 20px 0px",
@@ -23,14 +23,12 @@ const NoteItem = (props) => {
               deleteNote(note._id);
             }}
           />
-          <Link to="/AddNote" className="text-dark">
             <i
               className="fa-solid fa-pen-to-square mx-2"
               onClick={() => {
-                editNote(note._id);
+                updateNote(note);
               }}
             />
-          </Link>
         </p>
       </div>
     </div>

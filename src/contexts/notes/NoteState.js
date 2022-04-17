@@ -22,8 +22,6 @@ const NoteState = (props) => {
         "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjIzZjA4YjBkNmQzOGQzNTJlYzI0ZGM4In0sImlhdCI6MTY0OTE1NDE2N30.xxMXAN9vBPpLLvbfask_UJQco7YTnr8uZvPPYMj16D0"
     }});
     const json = await response.json();
-    console.log("getnotes is called")
-    console.log(json, "getnotes is called");
     setNotes(json);
   };
 
@@ -39,9 +37,9 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     });
     const note = await response.json();
-    console.log(note,)
     setNotes([...notes, note]);
   };
+  
 
   //Remove a note from the state
   const deleteNote = async (id) => {
@@ -75,17 +73,19 @@ const NoteState = (props) => {
       }),
     });
 
-    const json = response.json();
-
+    const json =await response.json();
+    let newNotes = JSON.parse(JSON.stringify(notes));
     //filter the notes and replace the note with the new note
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
       if (element._id === id) {
-        notes[index].title = title;
-        notes[index].description = description;
-        notes[index].tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
     }
+    setNotes(newNotes);
   };
 
   return (

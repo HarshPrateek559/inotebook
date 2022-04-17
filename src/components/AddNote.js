@@ -1,11 +1,10 @@
 //This component adds and edits the notes to the database
-//
 
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import noteContext from "../contexts/notes/noteContext";
 
-const AddNote = () => {
+const AddNote = (props) => {
   const context = useContext(noteContext);
   const { addNote } = context;
   const [note, setNote] = useState({
@@ -29,6 +28,18 @@ const AddNote = () => {
     addNote(note.title, note.description, note.tag);
     setNote({ title: "", description: "", tag: "" }); //This is resetting the form
   };
+let tit='';
+let des='';
+
+if(Object.keys(props).length === 0) {
+  tit = note.title;
+  des = note.description;
+ }
+// else{
+//    tit = props.title;
+//    des = props.description;
+// }
+
   return (
     <div className="container">
       <div className="mb-3">
@@ -42,7 +53,7 @@ const AddNote = () => {
           name="title"
           placeholder="Title of The Note..."
           onChange={handleChange}
-          value={note.title}
+          value={tit}
         />
       </div>
       <div>
@@ -57,7 +68,7 @@ const AddNote = () => {
             name="description"
             placeholder="Content of The Note..."
             onChange={handleChange}
-            value={note.description}
+            value={des}
           ></textarea>
         </div>
         <Link to="/" className="text-decoration-none text-white">
