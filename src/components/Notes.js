@@ -131,6 +131,9 @@ const Notes = () => {
               </button>
               <button
                 onClick={handleClick}
+                disabled={
+                  note.etitle.length < 5 || note.edescription.length < 5
+                }
                 type="button"
                 className="btn btn-primary"
               >
@@ -158,6 +161,4 @@ const Notes = () => {
 
 export default Notes;
 
-// disabled={
-//   note.etitle.length < 5 || note.edescription.length < 5
-// }
+
