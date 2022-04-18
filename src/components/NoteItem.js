@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import noteContext from "../contexts/notes/noteContext";
+import alertContext from "../contexts/Alert/alertContext";
 
 const NoteItem = (props) => {
   const context = useContext(noteContext);
   const { deleteNote, } = context;
+  const contexts = useContext(alertContext);
+  const { showAlert } = contexts;
   const { note, updateNote } = props;
 
   let mystyle = {
@@ -21,12 +24,14 @@ const NoteItem = (props) => {
             className="fa-solid fa-trash-alt mx-2"
             onClick={() => {
               deleteNote(note._id);
+              showAlert("Note Deleted", "danger");
             }}
           />
             <i
               className="fa-solid fa-pen-to-square mx-2"
               onClick={() => {
                 updateNote(note);
+                
               }}
             />
         </p>

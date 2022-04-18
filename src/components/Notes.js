@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteItem from "./NoteItem";
 import noteContext from "../contexts/notes/noteContext";
+import alertContext from "../contexts/Alert/alertContext";
 
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
+  const contexts = useContext(alertContext);
+  const { showAlert } = contexts;
   useEffect(() => {
     async function fetchData() {
       await getNotes();
@@ -26,6 +29,7 @@ const Notes = () => {
   const handleClick = async (e) => {
     await editNote(note.id, note.etitle, note.edescription, note.etag);
     refClose.current.click();
+    showAlert("Note Updated", "success");
   };
 
   const updateNote = async (currentNote) => {
@@ -72,7 +76,7 @@ const Notes = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body" style={{textAlign: "left"}}>
               <form className="my-3">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
@@ -90,7 +94,7 @@ const Notes = () => {
                     required
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 ">
                   <label htmlFor="description" className="form-label">
                     Description
                   </label>

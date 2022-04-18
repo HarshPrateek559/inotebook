@@ -1,6 +1,5 @@
 import Notes from "./Notes";
 import { Link } from "react-router-dom";
-import AddNotes from "./AddNote";
 
 export default function Home() {
   let mystyle = {
