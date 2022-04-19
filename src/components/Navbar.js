@@ -9,18 +9,7 @@ export default function Navbar() {
     localStorage.setItem("token", "");
     navigate("/Login");
   };
-  const getUser = async () => {
-    const response = await fetch("http://localhost:5000/api/auth/getuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "auth-token": localStorage.getItem("token"),
-      },
-    });
-    const json = await response.json();
-    name = await json.name;
-  };
-  console.log(name)
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -63,7 +52,7 @@ export default function Navbar() {
             </ul>
             {!localStorage.getItem("token") ? (
               <form className="d-flex">
-                
+               
                 <Link to="/Login">
                   <button className="btn btn-success mx-1" type="submit">
                     Login
@@ -77,7 +66,6 @@ export default function Navbar() {
               </form>
             ) : (
               <div className="d-flex">
-                <p style = {{fontSize: "20px", color: "white"}}>{name}</p>
               <button className="btn btn-success" onClick={Logout}>
                 Logout
               </button>
