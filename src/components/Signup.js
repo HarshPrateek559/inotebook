@@ -29,7 +29,7 @@ const Signup = () => {
       );
       const json = await response.json(); //this contains the auth-token
       if (json.success) {
-        localStorage.setItem("auth-token", json.token);
+        localStorage.setItem("token", json.authToken);
         showAlert("SignUp Successful", "success");
       } else {
         showAlert("SignUp Failed", "danger");

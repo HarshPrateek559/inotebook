@@ -19,7 +19,9 @@ const Login = () => {
     });
     const json = await response.json(); //this contains the auth-token
     if (json.success) {
-      localStorage.setItem("auth-token", json.token);
+
+      localStorage.setItem("token", json.authToken);
+      console.log("success", json.authToken)
       showAlert("Login Successful", "success");
     } else {
       showAlert("Login Failed", "danger");
