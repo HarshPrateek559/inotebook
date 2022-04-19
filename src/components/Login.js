@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import alertContext from "../contexts/Alert/alertContext";
 
 const Login = () => {
   const [credential, setCredential] = useState({ email: "", password: "" });
   const contexts = useContext(alertContext);
   const { showAlert } = contexts;
+  let navigate = useNavigate();
   const handleSubmit = async (e) => {
     const response = await fetch("http://localhost:5000/api/auth/loginUser", {
       method: "POST",
@@ -19,7 +20,7 @@ const Login = () => {
     });
     const json = await response.json(); //this contains the auth-token
     if (json.success) {
-
+      navigate("/");
       localStorage.setItem("token", json.authToken);
       console.log("success", json.authToken)
       showAlert("Login Successful", "success");
