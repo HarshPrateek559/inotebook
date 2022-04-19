@@ -12,7 +12,6 @@ const AlertState = (props) => {
       setAlert({msg :"", type: ""});
     }, 1500);
   };
-  console.log(alert);
   return (
     <AlertContext.Provider value={{ alert, showAlert }}>
       {props.children}
