@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import alertContext from "../contexts/Alert/alertContext";
 
 const Signup = () => {
@@ -11,6 +11,7 @@ const Signup = () => {
     password: "",
     cpassword: "",
   });
+  let navigate = useNavigate();
   const handleSubmit = async () => {
     if (credential.cpassword === credential.password) {
       const response = await fetch(
@@ -31,6 +32,7 @@ const Signup = () => {
       if (json.success) {
         localStorage.setItem("token", json.authToken);
         showAlert("SignUp Successful", "success");
+        navigate("/");
       } else {
         showAlert("SignUp Failed", "danger");
       }
