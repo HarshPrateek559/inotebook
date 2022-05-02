@@ -14,7 +14,7 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <div className="navbar-brand">Navbar</div>
+          <div className="navbar-brand">iNoteBook</div>
           <button
             className="navbar-toggler"
             type="button"
